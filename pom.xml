@@ -37,26 +37,32 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.4.0</version> <executions> <execution> <phase>pre-clean</phase> 
+				<goals> <goal>exec</goal> </goals> </execution> </executions> <configuration> 
+				<executable>cp</executable> <arguments> <argument>-R</argument> <argument>target</argument> 
+				<argument>target-backup</argument> </arguments> </configuration> </plugin -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
 				<executions>
 					<execution>
 						<phase>pre-clean</phase>
 						<goals>
-							<goal>exec</goal>
+							<goal>copy-resources</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<executable>cp</executable>
-					<arguments>
-						<argument>-R</argument>
-						<argument>target</argument>
-						<argument>target-backup</argument>
-					</arguments>
+					<outputDirectory>target-backup</outputDirectory>
+					<resources>
+						<resource>
+							<directory>target</directory>
+						</resource>
+					</resources>
 				</configuration>
+
 			</plugin>
 		</plugins>
 	</build>
