@@ -3,7 +3,7 @@
 	<groupId>dta</groupId>
 	<artifactId>bankonet-client</artifactId>
 	<version>1</version>
-	
+
 	<build>
 		<finalName>banko-client</finalName>
 		<plugins>
@@ -36,6 +36,27 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>cp</executable>
+					<arguments>
+						<argument>-R</argument>
+						<argument>target</argument>
+						<argument>target-backup</argument>
+					</arguments>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
